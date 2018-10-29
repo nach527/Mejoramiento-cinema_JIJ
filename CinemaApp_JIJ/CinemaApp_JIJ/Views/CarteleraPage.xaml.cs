@@ -39,7 +39,7 @@ namespace CinemaApp_JIJ.Views
         private async void Item_Selected(object sender, SelectedItemChangedEventArgs e)
         {
             var pelicula = e.SelectedItem as Pelicula;
-            await Navigation.PushAsync(new Funciones(pelicula));
+            await Navigation.PushAsync(new FuncionesPage(pelicula));
         }
     }
 }

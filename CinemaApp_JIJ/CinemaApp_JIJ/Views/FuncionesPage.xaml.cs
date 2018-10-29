@@ -13,11 +13,12 @@ namespace CinemaApp_JIJ.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class FuncionesPage : ContentPage
 	{
-		public FuncionesPage (Pelicula FuncionPelicula)
+     Pelicula peliculaElegida = new Pelicula();
+        public FuncionesPage (Pelicula FuncionPelicula)
 		{
             InitializeComponent();
             BindingContext = FuncionPelicula;
-            var peliculaElegida = new Pelicula();
+           
             peliculaElegida = FuncionPelicula;
         }
         private async void Item_Selected(object sender, SelectedItemChangedEventArgs e)
@@ -29,10 +30,15 @@ namespace CinemaApp_JIJ.Views
                 return;
             }
             int boletas = Convert.ToInt32(CantidadBoletas.Text);
+            int BoletasTotal = boletas * funcionSeleccionada.Precio;
 
+            ResumenCompra resumencompra = new ResumenCompra();
+            resumencompra.funcion = funcionSeleccionada;
+            resumencompra.pelicula = peliculaElegida;
+            resumencompra.Cantidad = boletas;
+            resumencompra.Total = BoletasTotal;
 
-
-            await Navigation.PushAsync(new ResumenComprasPage(funcionSeleccionada));
+            await Navigation.PushAsync(new ResumenComprasPage(resumencompra));
         }
 
     }
