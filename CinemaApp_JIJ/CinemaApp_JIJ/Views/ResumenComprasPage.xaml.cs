@@ -23,7 +23,7 @@ namespace CinemaApp_JIJ.Views
 
               {
             
-            
+             
                 DisplayAlert("REALIZADA", "lA RESERVA SE HA GENERADO CORRECTAMENTE", "OK");
                 return;
             }
